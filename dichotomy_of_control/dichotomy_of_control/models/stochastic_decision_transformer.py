@@ -80,7 +80,20 @@ class PositionlessTFGPT2MainLayer(tf.keras.layers.Layer):
           encoder_attention_mask=attention_mask,
           head_mask=None,
           encoder_hidden_states=None,
-          encoder_attention_mask=None,
+
+          # Originally, the line below was "encoder_attention_mask=None", but that didn't compile,
+          # because we already have such a keyword argument (three lines above).
+          #
+          # Should the line below be changed to "attention_mask=None" or "attention_mask=attention_mask"?
+          # Or should the above "encoder_attention_mask=attention_mask" line be changed
+          # to "encoder_attention_mask=None", while the line below should be "attention_mask=attention_mask"?
+          #
+          # Or maybe some of these arguments are positional arguments, and then it matters
+          # whether the first argument is called "encoder_attention_mask" or "attention_mask".
+          #
+          # TODO: find the proper order and a proper value ("None" or "attention_mask")
+          # for the "encoder_attention_mask" and "attention_mask" arguments.
+          attention_mask=None,
           use_cache=False,
           output_attentions=False,
           training=training)

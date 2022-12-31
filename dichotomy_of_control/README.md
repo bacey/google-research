@@ -25,7 +25,7 @@ Create the offline datasets for Bandit and FrozenLake:
 
 Run DoC on Bandit:
 
-    python -m dichotomy_of_control.scripts.run_tabular.py --load_dir='./tests/testdata' --algo_name='doc'
+    python -m dichotomy_of_control.scripts.run_tabular --load_dir='./tests/testdata' --algo_name='doc'
 
 Change `algo_name` in `run_tabular.sh` from `doc` (Dichotomy of Control) to `dt` (Decision Transformer) to observe dramatic performance drop.
 
